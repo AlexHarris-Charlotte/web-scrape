@@ -1,6 +1,7 @@
 // Instantiate Express
 const express = require('express');
 const app = express();
+app.use(express.static('public'));
 
 // Helper Packages
 const mongoose = require('mongoose');
@@ -16,7 +17,6 @@ app.use(bodyParser.json());
 
 // Set up Handlebars engine
 const exphbs  = require('express-handlebars');
-app.use(express.static('public'));
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
  

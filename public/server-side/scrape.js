@@ -1,17 +1,29 @@
 const cheerio = require('cheerio');
 const request = require('request');
 
-const scrape = (function() {
 
+const scrape = {
+    getNBA: function() {
+        return new Promise((resolve,reject) => {
+            request('http://www.espn.com/nba/', function (error, response, html) {
+                const $ = cheerio.load(html);
+                const results = [];
 
-    
-    request('http://www.google.com', function (error, response, body) {
-        console.log('error:', error); // Print the error if one occurred
-        console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-        console.log('body:', body); // Print the HTML for the Google homepage.
-    });
-    
-})();
+                $("h1.contentItem__title").each(function(i, element) {
+                    let textContent = $(element).text();
+                    results.push({
+                    text: textContent
+                    });
+                });
+                if (results) {
+                    resolve(results);
+                } else {
+                    reject("No data");
+                }
+            });
+        })
+    }
+};
 
 module.exports = scrape;
 

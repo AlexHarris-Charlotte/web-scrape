@@ -1,1 +1,27 @@
-<h1>This is the home hbs file</h1>
+<main>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="#">Saved Articles</a>
+                <button class="btn btn-sm btn-outline-info">Scrape New Articles</button>
+                </div>
+            </div>
+        </nav>
+    </header> 
+    <section class="container">
+        {{#each title}}
+            <h2>{{text}}</h2>
+        {{/each}}
+
+    </section>       
+
+</main>
+
+
+
+
