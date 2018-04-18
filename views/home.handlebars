@@ -14,8 +14,14 @@
         </nav>
     </header> 
     <section class="container">
-        {{#each title}}
-            <h2>{{text}}</h2>
+        {{#each articles}}
+            <article class='row'>
+                <h2 class='text-center col'>{{title}}</h2>
+                <div class='row'>
+                    <img class='article-img col-sm-4 img-responsive' src={{image}} />
+                    <p class='col'>{{summary}}</p>
+                </div>
+            </article>
         {{/each}}
 
     </section>       

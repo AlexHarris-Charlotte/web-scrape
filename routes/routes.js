@@ -6,16 +6,14 @@ const scrapeData = require('../public/server-side/scrape');
 
 
 router.get('/', function (req, res) {
-    scrapeData.getNBA()
+    scrapeData.getArticles()
         .then(results => {
         const data = {
             title: [results[0], results[1]]
         }
-        console.log(typeof(results));
-        console.log(results[0]);
-        res.render('home', data);
+        res.render('home', results);
     }).catch(errMessage => {
-       // alert(errMessage);
+       console.log(errMessage);
     })
 });
     

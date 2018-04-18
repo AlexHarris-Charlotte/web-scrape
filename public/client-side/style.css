@@ -13,8 +13,16 @@ img {
     height: 100%;
 }
 
+article {
+    background-color: rgba(52,58,64, .8);
+}
+
+.article-img {
+    height: 50%;
+}
+
 .bg-img {
-    position: absolute;
+    position: fixed;
     z-index: -1;
     left: 0;
     top: 0;
@@ -24,7 +32,7 @@ img {
 
 .foot {
     background: linear-gradient(0.25turn, #561963, #771724, #7e0909);
-    position:absolute;
+    position: fixed;
     font-size: 12px;
     bottom:0;
     width:100%;
