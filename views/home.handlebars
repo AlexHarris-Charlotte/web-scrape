@@ -8,25 +8,49 @@
                 <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="#">Saved Articles</a>
-                <button class="btn btn-sm btn-outline-info">Scrape New Articles</button>
+                <a href="/scrape">
+                    <button id="scrape" class="btn btn-sm btn-outline-info">Scrape New Articles</button>
+                </a>
                 </div>
             </div>
         </nav>
     </header> 
+    <h1 class="text-center">Today's News</h1>
     <section class="container">
         {{#each articles}}
-            <article class='row'>
+        <article>
+            <div class='row'>
                 <h2 class='text-center col'>{{title}}</h2>
-                <div class='row'>
-                    <img class='article-img col-sm-4 img-responsive' src={{image}} />
-                    <p class='col'>{{summary}}</p>
-                </div>
-            </article>
+            </div>
+            <div class='row'>
+                <div class='col'></div>
+                <img class='article-img col-sm-4 img-responsive' src={{image}} alt="" />
+                <div class='col'></div>
+            </div>
+            <div class='row'>
+                <p class='text-center col'>{{summary}}</p>
+            </div>
+            <div class='row'>
+                <a class='text-center col' href={{link}}>Link to the Article at the New York Times</a>
+            </div>
+            
+            <div class="container">
+            <div class='row'>
+                <div class="col"></div>
+                <button class='addArticle btn btn-info text-center'>Add this article to your archive</button>
+                <div class="col"></div>
+            </div>
+            </div>
+            <br/>
+            <hr>
+            <br/>
+        </article>
         {{/each}}
 
     </section>       
 
 </main>
+<script src='/client-side/clientSide.js'></script>
 
 
 

@@ -1,14 +1,18 @@
+// Cool Techs to integrate into this app
+// Passport Authentication
+// css keyframes
+
+
 // Instantiate Express
 const express = require('express');
 const app = express();
 app.use(express.static('public'));
 
-// Helper Packages
+// Mongoose Set up
 const mongoose = require('mongoose');
-
-// not sure if these are needed in this file
-const cheerio = require('cheerio');
-const request = require('request');
+// Connect Mongoose to our web-scrape db
+mongoose.connect("mongodb://localhost/web-scrape");
+const webScrapeModel = require('./models/scrapeModel');
 
 // Set up Body-Parser
 const bodyParser = require('body-parser');

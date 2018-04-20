@@ -1,12 +1,10 @@
-/* body, html {
-    background-image: url('https://static.politico.com/dims4/default/72b6e9f/2147483647/resize/1160x%3E/quality/90/?url=https%3A%2F%2Fstatic.politico.com%2F6d%2Fe9%2Ff537a1fe4b11bd9dfce787c4be84%2Fnyt-hp.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-size: 100%;
-    image-rendering: -webkit-optimize-contrast;
-    height: 100%;
-    background-position: center;
-} */
+body {
+    color: white;
+}
+
+section {
+    padding-bottom: 75px;
+}
 
 img {
     width: 100%;
