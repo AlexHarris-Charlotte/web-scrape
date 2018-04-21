@@ -2,6 +2,8 @@
 // Passport Authentication
 // css keyframes
 
+// Use handlebars if helper to render
+// a notes button to view notes of an article
 
 // Instantiate Express
 const express = require('express');

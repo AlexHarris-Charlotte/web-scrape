@@ -7,13 +7,13 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="/savedArticles">Saved Articles</a>
+                <a class="nav-item nav-link" href="#">Saved Articles</a>
                 <a class="nav-item nav-link" href="/scrape">Scrape New Articles</a>
                 </div>
             </div>
         </nav>
     </header> 
-    <h1 class="text-center">Today's News</h1>
+    <h1 class="text-center">Your Archive</h1>
     <section class="container">
         {{#each articles}}
         <article>
@@ -35,7 +35,8 @@
             <div class="container">
             <div class='row'>
                 <div class="col"></div>
-                <button class='addArticle btn btn-info text-center'>Add this article to your archive</button>
+                <button class='addNote col btn btn-success text-center' value={{_id}}>Add a Note</button>
+                <button class='deleteArticle col btn btn-danger text-center' value={{_id}}>Remove this article from your archive</button>
                 <div class="col"></div>
             </div>
             </div>
@@ -45,10 +46,17 @@
         </article>
         {{/each}}
 
+    <section id='modal' class='modal'>
+        <div id='modal-content' class='modal-content container text-center'>
+            <textarea id='noteText' name="textarea" rows="10" cols="50" placeholder="Write your note"></textarea>
+            <div>
+                <button id='submitNote' class='btn btn-outline-success'>Submit</button>
+                <button id="close" class="btn btn-outline-danger">Close</button>
+            </div>
+        </div>
+    </section>
+
     </section>       
 
+   
 </main>
-
-
-
-
