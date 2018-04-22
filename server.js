@@ -14,7 +14,7 @@ app.use(express.static('public'));
 const mongoose = require('mongoose');
 // Connect Mongoose to our web-scrape db
 mongoose.connect("mongodb://localhost/web-scrape");
-const webScrapeModel = require('./models/scrapeModel');
+const webScrapeDB = require('./models');
 
 // Set up Body-Parser
 const bodyParser = require('body-parser');
@@ -32,6 +32,6 @@ app.use(routes);
 
 
 
-app.listen(3000, () => {
-    console.log('listening on port 3000');
+app.listen(8080, () => {
+    console.log('listening on port 8080');
 });

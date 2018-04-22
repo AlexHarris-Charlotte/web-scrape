@@ -80,6 +80,7 @@ const modalSection = document.querySelector('#modal');
 const modalCloseButton = document.querySelector('#close');
 const noteText = document.querySelector('#noteText');
 const submitNote = document.querySelector('#submitNote');
+const noteTitle = document.querySelector('#noteTitle');
 
 // This will open the modal when a button is clicked
 noteButtons.forEach( button => {
@@ -90,6 +91,7 @@ noteButtons.forEach( button => {
 closeModal = () => {
     modalSection.style.display = 'none';
     noteText.value = '';
+    noteTitle.value = '';
 };
 
 // This closes modal on close click
@@ -103,7 +105,8 @@ function openModal() {
     modalSection.style.display = 'block'
     submitNote.addEventListener('click', () => {
         const note = noteText.value;
-        addNote(articleId, note);
+        const title = noteTitle.value;
+        addNote(articleId, note, title);
         closeModal();
     });
     
@@ -112,13 +115,13 @@ function openModal() {
 };
 
 
-function addNote(id, note) {
+function addNote(id, note, title) {
     const data = {
-        id,
-        note
+        noteTitle: title,
+        noteContent: note
     }
     const xhr = new XMLHttpRequest();
-    xhr.open("PUT", '/addNote', true);
+    xhr.open("POST", `/addNote/${id}`, true);
     xhr.onload = function() {
         if (this.status >= 200 && this.status < 400) {
             console.log(this.responseText);
@@ -127,3 +130,5 @@ function addNote(id, note) {
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(data));
 }
+
+
