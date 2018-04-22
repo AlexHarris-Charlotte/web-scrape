@@ -5,11 +5,12 @@ mongoose.connect('mongodb://localhost:27017/web-scrape');
 const scrapeData = require('../public/server-side/scrape');
 const webScrapeDB = require('../models');
 
+// Home route
 router.get('/', function (req, res) {
     res.render('home');
 });
 
-
+// Scrapes articles from the New York Times
 router.get('/scrape', (req, res) => {
     scrapeData.getArticles()
         .then(results => {
@@ -33,7 +34,8 @@ router.get('/savedArticles', (req, res) => {
             const data = {
                 articles: savedArticles
             }
-            console.log(savedArticles);
+            // console.log(savedArticles);
+            console.log(data.articles);
             res.render('savedArticles', data);
         })
 });

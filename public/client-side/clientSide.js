@@ -129,6 +129,27 @@ function addNote(id, note, title) {
     };
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(data));
+    location.reload();
 }
 
+const previousNoteModal = document.querySelector('#previousNoteModal');
+const previousNotesButtons = document.querySelectorAll('.previousNote');
+const previousModalClose = document.querySelector('#previousModalClose');
+const previousTitle = document.querySelector('#prevNoteTitle');
+const previousContent = document.querySelector('#prevNoteContent');
+
+previousNotesButtons.forEach(button => {
+    button.addEventListener('click', previousNotes);
+});
+
+previousModalClose.addEventListener('click', () => {
+    previousNoteModal.style.display = 'none';
+});
+
+function previousNotes() {
+    previousNoteModal.style.display = 'block';
+    let { noteTitle, noteContent } = JSON.parse(this.attributes[1].nodeValue);
+    previousTitle.textContent = noteTitle;
+    previousContent.textContent = noteContent;
+};
 

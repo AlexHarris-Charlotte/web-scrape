@@ -1,5 +1,6 @@
 // Cool Techs to integrate into this app
 // Passport Authentication
+// bcrypt
 // css keyframes
 
 // Use handlebars if helper to render

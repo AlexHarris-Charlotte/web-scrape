@@ -36,6 +36,9 @@
             <div class='row'>
                 <div class="col"></div>
                 <button class='addNote col btn btn-success text-center' value={{_id}}>Add a Note</button>
+                {{#if note}}
+                    <button class='previousNote col btn btn-warning text-center' data-note='{"noteTitle":"{{note.noteTitle}}", "noteContent": "{{note.noteContent}}" }' value={{_id}}>Previous Note</button>
+                {{/if}}
                 <button class='deleteArticle col btn btn-danger text-center' value={{_id}}>Remove this article from your archive</button>
                 <div class="col"></div>
             </div>
@@ -45,6 +48,18 @@
             <br/>
         </article>
         {{/each}}
+
+
+    <section id='previousNoteModal' class='modal'>
+        <div id='previous-modal-content' class='modal-content container text-center'>
+            <h3 id='prevNoteTitle'></h3>
+            <div id='prevNoteContent'></div>
+            <div>
+                <button id="previousModalClose" class="btn btn-outline-danger">Close</button>
+            </div>
+        </div>
+    </section>
+
 
     <section id='modal' class='modal'>
         <div id='modal-content' class='modal-content container text-center'>
@@ -61,3 +76,15 @@
 
    
 </main>
+
+
+
+{{!-- Previous Notes Modal --}}
+{{!-- 
+{{#each articles}}
+    <div>
+        {{#if note}}
+            <p>{{note.noteTitle}}</p>
+        {{/if}}
+    </div>
+{{/each}} --}}
