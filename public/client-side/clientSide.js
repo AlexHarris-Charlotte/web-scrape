@@ -55,9 +55,9 @@ function notifyDelete() {
         const xhr = new XMLHttpRequest();
         xhr.open('DELETE', '/deleteArticle', true);
         xhr.onload = function() {
-            if (this.status >= 200 && this.status < 400) {
-                console.log(this.responseText);
-            };
+            // if (this.status >= 200 && this.status < 400) {
+            //     console.log(this.responseText);
+            // };
         };
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify({id}));

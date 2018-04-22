@@ -44,14 +44,19 @@ router.get('/savedArticles', (req, res) => {
 // Delete a specific article from the database
 router.delete('/deleteArticle', (req, res) => {
     const deleteId = req.body.id;
+    webScrapeDB.articles.findOne({_id: deleteId})
+        .then(thing => {
+            const noteId = thing.note;
+            webScrapeDB.notes.findByIdAndRemove(noteId).exec();
+        });
     webScrapeDB.articles.findByIdAndRemove(deleteId).exec();
-    // need to delete corresponding note
+    console.log('I think I deleted both');
 });
 
 
 
 router.post('/addNote/:id', (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     webScrapeDB.notes.create(req.body)
         .then( note => {
             return webScrapeDB.articles.findOneAndUpdate({ _id: req.params.id }, { note: note._id } , { new: true });
@@ -60,6 +65,5 @@ router.post('/addNote/:id', (req, res) => {
             res.json(dbArticle);
           })
 });
-
 
 module.exports = router;
