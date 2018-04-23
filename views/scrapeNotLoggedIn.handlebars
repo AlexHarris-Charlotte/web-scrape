@@ -1,0 +1,54 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="/profile">Profile</a>
+            <a class="nav-item nav-link" href="/scrape">Scrape New Articles</a>
+            <a class="nav-item nav-link" href="/auth/google">Login with Google</a>
+            <a class="nav-item nav-link" href="/auth/logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    </header> 
+    <h1 class="text-center">Today's News</h1>
+    <section class="container">
+        {{#each articles}}
+        <article>
+            <div class='row'>
+                <h2 class='text-center col'>{{title}}</h2>
+            </div>
+            <div class='row'>
+                <div class='col'></div>
+                <img class='article-img col-sm-4 img-responsive' src={{image}} alt="" />
+                <div class='col'></div>
+            </div>
+            <div class='row'>
+                <p class='text-center col'>{{summary}}</p>
+            </div>
+            <div class='row'>
+                <a class='text-center col' href={{link}}>Link to the Article at the New York Times</a>
+            </div>
+            
+            <div class="container">
+            <div class='row'>
+                <div class="col">
+                    <h3 class='text-center'>Log In to create a profile so that you can add this article to your archive.</h3>
+                </div>
+            </div>
+            </div>
+            <br/>
+            <hr>
+            <br/>
+        </article>
+        {{/each}}
+
+    </section>       
+
+</main>
+

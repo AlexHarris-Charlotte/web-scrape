@@ -21,6 +21,7 @@ function articleData() {
 
 
 function addArticle(articleData) {
+    console.log(articleData);
     const xhr = new XMLHttpRequest();
     xhr.open('POST', 'addArticle', true);
     xhr.onload = function() {
@@ -30,6 +31,11 @@ function addArticle(articleData) {
     };
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(articleData));
+    console.log(articleData.image);
+    const msg = "<img src="+articleData.image+">" +
+          "<p>"+articleData.title.slice(0,30)+"...</p>" +
+          "<p>Was Added to you profile</p>";
+    alertify.log(msg);
 };
 
 
@@ -63,13 +69,20 @@ function notifyDelete() {
         xhr.send(JSON.stringify({id}));
     };
 
-    let userResponse = confirm('Are you sure that you want to delete this article?');
-    if (userResponse) {
-        deleteHandler();
-        location.reload();
-    } else {
-        alert('not deleted');
-    };
+
+    // confirm dialog
+
+
+    
+    alertify.confirm("Are you sure you want to delete this Article?", function () {
+        alertify.error('Article Deleted');
+        setTimeout(() => { 
+            deleteHandler();
+            location.reload();
+        }, 2000);
+    }, function() {
+        alertify.success('Article Not Deleted');
+    });
 };
 
 

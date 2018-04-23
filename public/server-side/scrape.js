@@ -16,9 +16,9 @@ const scrape = {
                 $("div.story-body").each(function(i, element) {
                      results.articles.push({
                          title   : $(this).find($('h2.headline > a')).text() || "No Title",
-                         summary : $(this).find($("p.summary")).text() || "No summary",
+                         summary : $(this).find($("p.summary")).text() || "No Summary",
                          link    : $(this).find("h2.headline > a").attr('href') || "No Link",
-                         image   : $(this).find("img").attr('src') || "No Image"
+                         image   : $(this).find("img").attr('src') || "../assets/default.png"
                      });
                 });
 

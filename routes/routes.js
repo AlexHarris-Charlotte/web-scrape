@@ -7,18 +7,35 @@ const webScrapeDB = require('../models');
 
 // Home route
 router.get('/', function (req, res) {
-    res.render('home');
+    console.log(req.user);
+    res.render('todo');
 });
 
 // Scrapes articles from the New York Times
-router.get('/scrape', (req, res) => {
+
+
+//
+//In this route I need to use a conditional to render based on if a user is logged in
+//if a user is logged in. I will render the page with buttons to add articles
+//if user not logged in. They cannot add articles
+router.get('/scrape', (req, res) => {   
     scrapeData.getArticles()
         .then(results => {
-            res.render('home', results);
+
+            if (req.user) {
+                res.render('scrapeLoggedIn', results);
+            } else {
+                res.render('scrapeNotLoggedIn', results);
+            }
+
         }).catch(errMessage => {
             console.log(errMessage);
         });
 });
+
+// router.get('/profile', (req, res) => {
+//     res.render('profile');
+// });
 
 // Adds a specific article to the database
 router.post('/addArticle', (req, res) => {
@@ -26,8 +43,14 @@ router.post('/addArticle', (req, res) => {
     newEntry.save();
 });
 
+
+
+//
+// In this route, if user logged in, show their articles
+// else have a page that requests the user to log in to add articles
 // Send saved articles to a user
-router.get('/savedArticles', (req, res) => {
+router.get('/profile', (req, res) => {
+    if (req.user) {
     webScrapeDB.articles.find({})
         .populate('note')
         .then(savedArticles => {
@@ -36,8 +59,11 @@ router.get('/savedArticles', (req, res) => {
             }
             // console.log(savedArticles);
             console.log(data.articles);
-            res.render('savedArticles', data);
+            res.render('profileLoggedIn', data);
         })
+    } else {
+        res.render('profileNotLoggedIn');
+    }
 });
 
 
