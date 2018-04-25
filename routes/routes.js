@@ -8,7 +8,7 @@ const webScrapeDB = require('../models');
 // Home route
 router.get('/', function (req, res) {
     console.log(req.user);
-    res.render('todo');
+    res.redirect('/scrape');
 });
 
 // Scrapes articles from the New York Times
@@ -23,6 +23,7 @@ router.get('/scrape', (req, res) => {
         .then(results => {
 
             if (req.user) {
+                results.user = req.user.userName;
                 res.render('scrapeLoggedIn', results);
             } else {
                 res.render('scrapeNotLoggedIn', results);
@@ -82,7 +83,6 @@ router.delete('/deleteArticle', (req, res) => {
 
 
 router.post('/addNote/:id', (req, res) => {
-    // console.log(req.body);
     webScrapeDB.notes.create(req.body)
         .then( note => {
             return webScrapeDB.articles.findOneAndUpdate({ _id: req.params.id }, { note: note._id } , { new: true });

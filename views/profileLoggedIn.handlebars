@@ -5,11 +5,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-            <a class="nav-item nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link active" href="/profile">Profile</a>
-            <a class="nav-item nav-link" href="/scrape">Scrape New Articles</a>
-            <a class="nav-item nav-link" href="/auth/google">Login with Google</a>
-            <a class="nav-item nav-link" href="/auth/logout">Logout</a>
+            <a class="nav-item nav-link active" href="/profile"><i class="fas fa-user-circle"></i> Profile</a>
+            <a class="nav-item nav-link" href="/scrape"><i class="far fa-newspaper"></i> View New Articles</a>
+            <a class="nav-item nav-link" href="/auth/logout"> <i class="far fa-times-circle"></i> Logout</a>
             </div>
         </div>
     </nav>
@@ -36,13 +34,12 @@
             
             <div class="container">
             <div class='row'>
-                <div class="col"></div>
-                <button class='addNote col btn btn-success text-center' value={{_id}}>Add a Note</button>
+                <div class=""></div>
+                <button class='addNote col-md-4 btn btn-success text-center' value={{_id}}>Add a Note</button>
                 {{#if note}}
-                    <button class='previousNote col btn btn-warning text-center' data-note='{"noteTitle":"{{note.noteTitle}}", "noteContent": "{{note.noteContent}}" }' value={{_id}}>Previous Note</button>
+                    <button class='previousNote col-md-4 btn btn-warning text-center' data-note='{"noteTitle":"{{note.noteTitle}}", "noteContent": "{{note.noteContent}}" }' value={{_id}}>Previous Note</button>
                 {{/if}}
-                <button class='deleteArticle col btn btn-danger text-center' value={{_id}}>Remove this article from your archive</button>
-                <div class="col"></div>
+                <button class='deleteArticle col-md-4 btn btn-danger text-center' value={{_id}}>Remove this article</button>
             </div>
             </div>
             <br/>

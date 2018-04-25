@@ -21,7 +21,6 @@ function articleData() {
 
 
 function addArticle(articleData) {
-    console.log(articleData);
     const xhr = new XMLHttpRequest();
     xhr.open('POST', 'addArticle', true);
     xhr.onload = function() {
@@ -31,7 +30,6 @@ function addArticle(articleData) {
     };
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(articleData));
-    console.log(articleData.image);
     const msg = "<img src="+articleData.image+">" +
           "<p>"+articleData.title.slice(0,30)+"...</p>" +
           "<p>Was Added to you profile</p>";
@@ -46,10 +44,6 @@ const deleteButtons = document.querySelectorAll('.deleteArticle');
 deleteButtons.forEach( button => {
     button.addEventListener('click', notifyDelete);
 });
-
-
-// in the deleteHandler func. need to pass an id of the button
-// so that we know what id we want to delete from our database!!
 
 
 function notifyDelete() {
@@ -68,10 +62,6 @@ function notifyDelete() {
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify({id}));
     };
-
-
-    // confirm dialog
-
 
     
     alertify.confirm("Are you sure you want to delete this Article?", function () {
@@ -107,11 +97,6 @@ closeModal = () => {
     noteTitle.value = '';
 };
 
-// This closes modal on close click
-modalCloseButton.addEventListener('click', closeModal);
-
-
-
 
 function openModal() {  
     const articleId = this.value;
@@ -122,9 +107,6 @@ function openModal() {
         addNote(articleId, note, title);
         closeModal();
     });
-    
-    // I get the database ID and the  text from the modal 
-        // submit and send it to my backend route to update that document
 };
 
 
@@ -142,7 +124,9 @@ function addNote(id, note, title) {
     };
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(data));
-    location.reload();
+    window.setTimeout(() => {
+        location.reload();
+    }, 1000)
 }
 
 const previousNoteModal = document.querySelector('#previousNoteModal');
