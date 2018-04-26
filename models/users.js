@@ -6,7 +6,11 @@ const Schema = mongoose.Schema,
  
 const usersSchema = new Schema({
     userName: String,
-    googleId: String
+    googleId: String,
+    articles: {
+        type: Schema.Types.ObjectId,
+        ref: "Article"
+    }
 });
 
 const usersModel = mongoose.model("user", usersSchema);

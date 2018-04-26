@@ -55,6 +55,7 @@ router.get('/profile', (req, res) => {
     webScrapeDB.articles.find({})
         .populate('note')
         .then(savedArticles => {
+            console.log(savedArticles);
             const data = {
                 articles: savedArticles
             }
